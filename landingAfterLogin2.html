@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Complaint Management System - Dashboard</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.8.2/alpine.js"
+      defer
+    ></script>
+    <style>
+      .complaints-table th,
+      .complaints-table td {
+        padding: 0.5rem;
+        border: 1px solid #e2e8f0;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-4">
+      <div
+        class="bg-white shadow-md rounded-lg p-6 flex justify-between items-center mb-6"
+      >
+        <h1 class="text-2xl font-bold">COMPLAINT MANAGEMENT SYSTEM</h1>
+        <div class="relative" x-data="{ open: false }">
+          <div @click="open = !open" class="flex items-center cursor-pointer">
+            <div
+              class="w-10 h-10 rounded-full bg-gray-300 mr-4 flex items-center justify-center"
+            >
+              <img
+                src="https://via.placeholder.com/40"
+                alt="User"
+                class="rounded-full"
+              />
+            </div>
+            <span>Welcome User</span>
+          </div>
+          <div
+            x-show="open"
+            @click.away="open = false"
+            class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1"
+          >
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >Profile</a
+            >
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >Change Password</a
+            >
+            <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100"
+              >Logout</a
+            >
+          </div>
+        </div>
+      </div>
+      <div class="flex">
+        <div class="w-1/4 bg-white shadow-md rounded-lg p-4">
+          <ul>
+            <li class="mb-4">
+              <a
+                href="#"
+                id="inbox-link"
+                class="flex items-center text-gray-700 hover:text-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 8l7.89-3.47a1 1 0 01.22-.03h8.78a1 1 0 011 1v12a1 1 0 01-1 1h-8.78a1 1 0 01-.22-.03L3 16V8z"
+                  ></path>
+                </svg>
+                Inbox
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M3 10h2l1.5 4h9l1.5-4h2M7 21a2 2 0 100-4 2 2 0 000 4zm10 0a2 2 0 100-4 2 2 0 000 4zm-10-4h10"
+                  ></path>
+                </svg>
+                Sent
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M12 4v16m8-8H4"
+                  ></path>
+                </svg>
+                Add User
+              </a>
+            </li>
+            <li class="mb-4">
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M11 11V6a4 4 0 114 0v5M12 17a2 2 0 100-4 2 2 0 000 4zm8 0a2 2 0 100-4 2 2 0 000 4zm-16 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm-16 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4zm4 0a2 2 0 100-4 2 2 0 000 4z"
+                  ></path>
+                </svg>
+                Activate/Deactivate User
+              </a>
+            </li>
+            <li>
+              <a
+                href="#"
+                class="flex items-center text-gray-700 hover:text-blue-500"
+              >
+                <svg
+                  class="w-5 h-5 mr-2"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7a4 4 0 100 8h8a4 4 0 100-8H8z"
+                  ></path>
+                </svg>
+                Reports
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="w-3/4 bg-white shadow-md rounded-lg p-6 ml-4">
+          <div id="content" class="mt-6">
+            <!-- Placeholder for the loaded page content -->
+            <p class="text-gray-700">
+              Welcome to the Complaint Management System. Select an option from
+              the left menu to get started.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function loadComplaintDetail(complaintId) {
+        document.getElementById("content").innerHTML = `
+                <h2 class="text-xl font-bold mb-4">COMPLAINT DETAIL</h2>
+                <table class="min-w-full bg-white complaints-table">
+                    <tr>
+                        <th>Complaint Id</th>
+                        <td>${complaintId}</td>
+                    </tr>
+                    <tr>
+                        <th>Complaint Desc</th>
+                        <td>abc</td>
+                    </tr>
+                    <tr>
+                        <th>Website</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Module</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Div</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Employee Name</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Employee No</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Desc</th>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <th>Reference Document</th>
+                        <td><a href="#" class="text-blue-500 hover:underline">Document Link</a></td>
+                    </tr>
+                </table>
+                <div class="mt-4">
+                        <label class="block text-gray-700">Action</label>
+                        <div class="mt-2">
+                            <input type="radio" id="close" name="action" value="close">
+                            <label for="close" class="mr-4">Close</label>
+                            <input type="radio" id="forward" name="action" value="forward">
+                            <label for="forward">Forward</label>
+                        </div>
+                        <div id="closeDiv" class="mt-4 hidden">
+                            <!-- Content for close action -->
+                            <div class="mt-4">
+                                <label for="remarks" class="block text-gray-700">Remarks</label>
+                                <textarea id="remarks" name="remarks" rows="4" class="w-full p-2 border rounded"></textarea>
+                                <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Close</button>
+                            </div>
+                            
+                        </div>
+                        <div id="forwardDiv" class="mt-4 hidden">
+                            <!-- Content for forward action -->
+                            <div class="mt-4">
+                                <label for="remarks" class="block text-gray-700">Remarks</label>
+                                <textarea id="remarks" name="remarks" rows="4" class="w-full p-2 border rounded"></textarea>
+                                <label for="selectUser" class="block text-gray-700">Select User</label>
+                                <select id="selectUser" name="selectUser" class="w-full p-2 border rounded">
+                                    <option value="user1">User 1</option>
+                                    <option value="user2">User 2</option>
+                                    <option value="user3">User 3</option>
+                                    <option value="user4">User 4</option>
+                                </select>
+                                <button class="bg-blue-500 text-white px-4 py-2 rounded mr-2">Close</button>
+                            </div>
+                            
+                        </div>
+
+                        
+                </div>
+            `;
+      }
+
+      document
+        .getElementById("inbox-link")
+        .addEventListener("click", function (e) {
+          e.preventDefault();
+          document.getElementById("content").innerHTML = `
+                <h2 class="text-xl font-bold mb-4">ALL COMPLAINTS</h2>
+                <table class="min-w-full bg-white complaints-table">
+                    <thead>
+                        <tr>
+                            <th>Complaint Id</th>
+                            <th>Complaint Desc</th>
+                            <th>Website</th>
+                            <th>Module</th>
+                            <th>Div</th>
+                            <th>Employee Name</th>
+                            <th>Employee No</th>
+                            <th>Desc</th>
+                            <th>Reference Document</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Description of complaint 1</td>
+                            <td>example.com</td>
+                            <td>Module 1</td>
+                            <td>Div 1</td>
+                            <td>John Doe</td>
+                            <td>12345</td>
+                            <td>Short description</td>
+                            <td><a href="#" class="text-blue-500 hover:underline">Document 1</a></td>
+                            <td><button class="text-blue-500 hover:underline" onclick="loadComplaintDetail(1)">Details</button></td>
+                        </tr>
+                        <!-- Add more complaint rows as needed -->
+                    </tbody>
+                </table>
+            `;
+        });
+
+      document
+        .getElementById("content")
+        .addEventListener("change", function (e) {
+          const selectedValue = e.target.value;
+          // console.log('Selected value:', selectedValue);
+          document.getElementById("closeDiv").classList.add("hidden");
+          document.getElementById("forwardDiv").classList.add("hidden");
+          if (selectedValue === "close") {
+            document.getElementById("closeDiv").classList.remove("hidden");
+          } else if (selectedValue === "forward") {
+            document.getElementById("forwardDiv").classList.remove("hidden");
+          }
+        });
+    </script>
+  </body>
+</html>
